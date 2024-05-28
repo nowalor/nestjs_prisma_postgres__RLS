@@ -1,18 +1,12 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Query, Resolver } from '@nestjs/graphql';
 import { User } from './user.entity';
-
-/*@Resolver()
-export class UsersResolver {
-  @Query((returns) => User)
-  async user() {
-    return {};
-  }
-} */
+import { UsersService } from './users.service';
 
 @Resolver()
-export class FooResolver {
-  @Query(() => String)
-  sayHello(): string {
-    return 'Hello World!';
+export class UsersResolver {
+  constructor(private usersService: UsersService) {}
+  @Query((returns) => User)
+  async findOne(@Args('id', { type: () => Int }) id: number) {
+    return this.usersService.getUser(id);
   }
 }

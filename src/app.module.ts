@@ -5,7 +5,7 @@ import { PrismaService } from './prisma.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { FooResolver } from './users/users.resolver';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,8 +13,9 @@ import { FooResolver } from './users/users.resolver';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, FooResolver],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
