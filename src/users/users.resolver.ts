@@ -6,7 +6,7 @@ import { UsersService } from './users.service';
 export class UsersResolver {
   constructor(private usersService: UsersService) {}
   @Query((returns) => User)
-  async findOne(@Args('id', { type: () => Int }) id: number) {
+  async getUser(@Args('id', { type: () => Int }) id: number) {
     return this.usersService.getUser(id);
   }
 }
