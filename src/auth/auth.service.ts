@@ -1,4 +1,3 @@
-import { Resolver } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { LoginInput } from './dto/login.input';
@@ -13,8 +12,6 @@ export class AuthService {
   ) {}
 
   async login(dto: LoginInput) {
-    console.log(this.prisma);
-
     const { email, password } = dto;
     const user = await this.prisma.user.findFirst({
       where: {

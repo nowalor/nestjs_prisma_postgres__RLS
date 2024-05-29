@@ -10,8 +10,9 @@ type User {
 }
 
 type Post {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  title: String!
+  body: String!
 }
 
 type LoginResponse {
@@ -21,26 +22,11 @@ type LoginResponse {
 
 type Query {
   getUser(id: Int!): User!
-  posts: [Post!]!
   post(id: Int!): Post!
 }
 
 type Mutation {
-  createPost(createPostInput: CreatePostInput!): Post!
-  updatePost(updatePostInput: UpdatePostInput!): Post!
-  removePost(id: Int!): Post!
   login(payload: LoginInput!): LoginResponse!
-}
-
-input CreatePostInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdatePostInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
 }
 
 input LoginInput {
