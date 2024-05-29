@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { JwtStrategy } from './jwt.strategy';
+import { AuthService } from './auth.service';
+import { AuthResolver } from './auth.resolver';
 
 @Module({
   imports: [
@@ -9,7 +11,7 @@ import { JwtStrategy } from './jwt.strategy';
       secret: 'secret-key-todo-replace',
     }),
   ],
-  providers: [PrismaService, JwtStrategy],
+  providers: [PrismaService, JwtStrategy, AuthService, AuthResolver],
   exports: [JwtStrategy, JwtModule],
 })
 export class AuthModule {}

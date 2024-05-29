@@ -14,6 +14,11 @@ type Post {
   exampleField: Int!
 }
 
+type LoginResponse {
+  success: Boolean!
+  token: String!
+}
+
 type Query {
   getUser(id: Int!): User!
   posts: [Post!]!
@@ -24,6 +29,7 @@ type Mutation {
   createPost(createPostInput: CreatePostInput!): Post!
   updatePost(updatePostInput: UpdatePostInput!): Post!
   removePost(id: Int!): Post!
+  login(payload: LoginInput!): LoginResponse!
 }
 
 input CreatePostInput {
@@ -35,4 +41,9 @@ input UpdatePostInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
 }
